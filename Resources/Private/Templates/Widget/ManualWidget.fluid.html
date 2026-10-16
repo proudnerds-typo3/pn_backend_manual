@@ -1,0 +1,22 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Widget/Widget"/>
+<f:section name="main">
+    <div class="manual-widget">
+        <f:if condition="{logoUrl}">
+            <img class="manual-widget__logo" src="{logoUrl}" alt="" />
+        </f:if>
+        <f:format.raw>{manual.introHtml}</f:format.raw>
+        <f:if condition="{manual.tableOfContents}">
+            <h3 class="manual-widget__heading"><f:translate key="pn_backend_manual.messages:manual.contents"/></h3>
+            <ol class="manual-widget__contents" role="list">
+                <f:for each="{manual.tableOfContents}" as="chapter">
+                    <li><a class="manual-widget__link" href="{manualUrl}#{chapter.id}"><f:if condition="{chapter.number}"><span class="manual-widget__number">{chapter.number}</span> </f:if>{chapter.title}</a></li>
+                </f:for>
+            </ol>
+        </f:if>
+    </div>
+</f:section>
+<f:section name="footer">
+    <a class="widget-cta" href="{manualUrl}"><f:translate key="pn_backend_manual.messages:manual.open"/></a>
+</f:section>
+</html>

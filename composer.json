@@ -1,0 +1,62 @@
+{
+    "name": "proudnerds/pn-backend-manual",
+    "type": "typo3-cms-extension",
+    "description": "Editor manuals in Markdown, registered by a sitepackage and shown as dashboard widgets with a full view in the TYPO3 backend.",
+    "keywords": [
+        "TYPO3 CMS",
+        "manual",
+        "documentation",
+        "markdown",
+        "dashboard"
+    ],
+    "homepage": "https://github.com/proudnerds-typo3/pn_backend_manual",
+    "license": "GPL-2.0-or-later",
+    "version": "1.0.0",
+    "authors": [
+        {
+            "name": "Jacco van der Post",
+            "email": "Jacco.VanDerPost@ProudNerds.com",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/proudnerds-typo3/pn_backend_manual/issues",
+        "source": "https://github.com/proudnerds-typo3/pn_backend_manual"
+    },
+    "require": {
+        "php": "^8.3",
+        "league/commonmark": "^2.10",
+        "typo3/cms-backend": "^14.3",
+        "typo3/cms-core": "^14.3",
+        "typo3/cms-dashboard": "^14.3",
+        "typo3/cms-fluid": "^14.3"
+    },
+    "require-dev": {
+        "typo3/testing-framework": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "ProudNerds\\PnBackendManual\\": "Classes/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ProudNerds\\PnBackendManual\\Tests\\": "Tests/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "typo3/class-alias-loader": true,
+            "typo3/cms-composer-installers": true
+        },
+        "bin-dir": ".Build/bin",
+        "sort-packages": true,
+        "vendor-dir": ".Build/vendor"
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "pn_backend_manual",
+            "web-dir": ".Build/public"
+        }
+    }
+}

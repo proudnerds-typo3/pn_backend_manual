@@ -1,0 +1,37 @@
+.manual-widget a {
+    text-decoration: underline;
+}
+
+.manual-widget__heading {
+    margin-top: 1rem;
+    font-size: 1rem;
+}
+
+.manual-widget__contents {
+    margin-bottom: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* Number in its own column, so wrapped titles line up */
+.manual-widget__link {
+    display: flex;
+    gap: 0.5em;
+}
+
+.manual-widget__number {
+    flex-shrink: 0;
+    font-variant-numeric: tabular-nums;
+}
+
+/* White plate: logos are usually made for a light background, the backend may be dark */
+.manual-widget__logo {
+    float: right;
+    width: auto;
+    max-width: 8rem;
+    max-height: 4rem;
+    margin: 0 0 0.5rem 1rem;
+    padding: 0.375rem;
+    border-radius: 0.25rem;
+    background: #fff;
+}

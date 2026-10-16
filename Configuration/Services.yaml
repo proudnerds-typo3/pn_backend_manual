@@ -1,0 +1,13 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  ProudNerds\PnBackendManual\:
+    resource: '../Classes/*'
+    exclude:
+      - '../Classes/Rendering/{ImageResolver,RenderedManual}.php'
+      - '../Classes/Rendering/Node/*'
+      # Registered per manual by the sitepackage, with its own options
+      - '../Classes/Widgets/*'

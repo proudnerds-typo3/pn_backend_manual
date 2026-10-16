@@ -1,0 +1,41 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Module"/>
+<f:section name="Content">
+<div class="manual">
+    <div class="manual__header">
+        <h1 class="manual__title">{title}</h1>
+        <f:if condition="{logoUrl}">
+            <img class="manual__logo" src="{logoUrl}" alt="" />
+        </f:if>
+    </div>
+    <div class="manual__layout">
+        <f:if condition="{manual.tableOfContents}">
+            <nav class="manual__contents" aria-labelledby="pn-backend-manual-contents-heading" data-manual-contents>
+                <h2 class="manual__contents-heading" id="pn-backend-manual-contents-heading"><f:translate key="pn_backend_manual.messages:manual.contents"/></h2>
+                <ol class="manual__contents-list{f:if(condition: showSections, then: ' manual__contents-list--chapters-bold')}">
+                    <f:for each="{manual.tableOfContents}" as="chapter">
+                        <li class="manual__contents-item{f:if(condition: chapter.number, then: ' manual__contents-item--numbered')}">
+                            <f:render section="ContentsLink" arguments="{entry: chapter}"/>
+                            <f:if condition="{showSections} && {chapter.sections}">
+                                <ol class="manual__contents-list manual__contents-list--sections">
+                                    <f:for each="{chapter.sections}" as="section">
+                                        <li class="manual__contents-item{f:if(condition: section.number, then: ' manual__contents-item--numbered')}"><f:render section="ContentsLink" arguments="{entry: section}"/></li>
+                                    </f:for>
+                                </ol>
+                            </f:if>
+                        </li>
+                    </f:for>
+                </ol>
+            </nav>
+        </f:if>
+        <article class="manual__body">
+            <f:format.raw>{manual.bodyHtml}</f:format.raw>
+        </article>
+    </div>
+</div>
+</f:section>
+
+<f:section name="ContentsLink">
+    <a class="manual__contents-link" href="#{entry.id}"><f:if condition="{entry.number}"><span class="manual__contents-number">{entry.number}</span> </f:if>{entry.title}</a>
+</f:section>
+</html>

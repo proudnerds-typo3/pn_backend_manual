@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="de" datatype="plaintext" original="EXT:pn_backend_manual/Resources/Private/Language/messages.xlf" date="2026-10-14T12:00:00Z" product-name="pn_backend_manual">
+        <body>
+            <trans-unit id="link.newWindow" resname="link.newWindow">
+                <source>opens in a new window</source>
+                <target>öffnet in einem neuen Fenster</target>
+            </trans-unit>
+            <trans-unit id="manual.contents" resname="manual.contents">
+                <source>Contents</source>
+                <target>Inhalt</target>
+            </trans-unit>
+            <trans-unit id="manual.open" resname="manual.open">
+                <source>Open the manual</source>
+                <target>Handbuch öffnen</target>
+            </trans-unit>
+            <trans-unit id="manual.notFound.title" resname="manual.notFound.title">
+                <source>Manual not available</source>
+                <target>Handbuch nicht verfügbar</target>
+            </trans-unit>
+            <trans-unit id="manual.notFound.text" resname="manual.notFound.text">
+                <source>This manual does not exist or you have no access to it. Access to a manual is granted through the dashboard widgets of your backend group.</source>
+                <target>Dieses Handbuch existiert nicht oder Sie haben keinen Zugriff darauf. Den Zugriff erhalten Sie über die Dashboard-Widgets Ihrer Backend-Gruppe.</target>
+            </trans-unit>
+            <trans-unit id="manual.error.title" resname="manual.error.title">
+                <source>Manual cannot be shown</source>
+                <target>Handbuch kann nicht angezeigt werden</target>
+            </trans-unit>
+            <trans-unit id="manual.error.text" resname="manual.error.text">
+                <source>The manual contains an error and cannot be shown. The error has been logged; please contact an administrator.</source>
+                <target>Das Handbuch enthält einen Fehler und kann nicht angezeigt werden. Der Fehler wurde protokolliert; bitte wenden Sie sich an einen Administrator.</target>
+            </trans-unit>
+            <trans-unit id="manual.print" resname="manual.print">
+                <source>Print or save as PDF</source>
+                <target>Drucken oder als PDF speichern</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
