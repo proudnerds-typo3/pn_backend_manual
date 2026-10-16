@@ -14,8 +14,12 @@ code it describes, and editors open it from their dashboard.
   chapters; one click opens the full manual inside the backend. No searching
   through mail or intranet, no separate login.
 - **Easy to look things up.** A table of contents next to the text that stays
-  in view, optional chapter numbers (1., 1.1) and sections, and a marker that
-  shows where you are, like the selected page in the page tree.
+  in view, a search field that filters it while you type, optional chapter
+  numbers (1., 1.1) and sections, and a marker that shows where you are, like
+  the selected page in the page tree.
+- **Feedback from readers.** A feedback link next to every chapter and section
+  sends a mail about that section, and the version and date under the title
+  show how recent the manual is.
 - **Kept up to date with the site.** The manual is a file in git. Change a
   content element and update its chapter in the same commit; it is reviewed and
   deployed together with the code, so the manual never lags behind.
@@ -40,14 +44,19 @@ Example 'Editor manual' widget on the dashboard, with the introduction and the c
 
 ![Dashboard with the widget "Editor manual": an introduction, the numbered chapters and the button "Open the manual"](Documentation/Images/dashboard-widget.png)
 
-The full view, with chapters and sections in the table of contents and the
-current section marked:
+The full view: version and date under the title, a search field above the
+table of contents, and buttons to print or give feedback:
 
-![Full view of the manual: buttons "Go back" and "Print or save as PDF", the table of contents on the left with "3.1 Create a news item" marked, and the text of that section on the right](Documentation/Images/full-view.png)
+![Full view: buttons "Go back", "Print or save as PDF" and "Give feedback", the title with "Version 1.2 · Updated October 16, 2026", the table of contents with a search field, and a feedback icon next to each heading](Documentation/Images/full-view.png)
 
-Both show the example manual in
+Searching for "teaser" leaves the chapter and the section that mention it; the
+current section is marked:
+
+![The search field with "teaser": only "3. News items" and "3.2 Fields" are left in the table of contents, next to the table of fields](Documentation/Images/search.png)
+
+All three show the example manual in
 [`Documentation/Example/EditorManual.md`](Documentation/Example/EditorManual.md),
-registered with `numbered: true` and `contentsDepth: 2`.
+registered with `numbered: true`, `contentsDepth: 2` and a `feedback` address.
 
 ## Requirements
 

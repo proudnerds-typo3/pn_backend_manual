@@ -38,6 +38,10 @@ that file, because the import map is cached. Labels use the translation domain
         -   Marks the current entry in the table of contents of the full view
     -   -   :file:`Resources/Public/JavaScript/manual-print.js`
         -   Opens the print dialog from the print button
+    -   -   :file:`Resources/Public/JavaScript/manual-search.js`
+        -   Filters the table of contents on the search field
+    -   -   :file:`Resources/Public/JavaScript/manual-feedback.js`
+        -   Puts a feedback link next to each chapter and section
 
 ..  note::
     ``ManualFinder`` uses the dashboard's ``WidgetRegistry``, which is marked

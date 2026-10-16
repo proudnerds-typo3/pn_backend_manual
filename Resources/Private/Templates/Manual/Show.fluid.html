@@ -3,7 +3,15 @@
 <f:section name="Content">
 <div class="manual">
     <div class="manual__header">
-        <h1 class="manual__title">{title}</h1>
+        <div>
+            <h1 class="manual__title">{title}</h1>
+            <f:if condition="{manual.version} || {updated}">
+                <p class="manual__meta">
+                    <f:if condition="{manual.version}"><span><f:translate key="pn_backend_manual.messages:manual.version" arguments="{0: manual.version}"/></span></f:if>
+                    <f:if condition="{updated}"><span><f:translate key="pn_backend_manual.messages:manual.updated" arguments="{0: updated}"/></span></f:if>
+                </p>
+            </f:if>
+        </div>
         <f:if condition="{logoUrl}">
             <img class="manual__logo" src="{logoUrl}" alt="" />
         </f:if>
@@ -12,6 +20,13 @@
         <f:if condition="{manual.tableOfContents}">
             <nav class="manual__contents" aria-labelledby="pn-backend-manual-contents-heading" data-manual-contents>
                 <h2 class="manual__contents-heading" id="pn-backend-manual-contents-heading"><f:translate key="pn_backend_manual.messages:manual.contents"/></h2>
+                <f:comment><!-- Hidden until the JavaScript that filters the list is loaded. A plain input: the form
+                    ViewHelpers need an Extbase request, and this is a plain backend controller --></f:comment>
+                <div class="manual__search" data-manual-search hidden>
+                    <label class="visually-hidden" for="pn-backend-manual-search"><f:translate key="pn_backend_manual.messages:manual.search.label"/></label>
+                    <input type="search" id="pn-backend-manual-search" class="form-control form-control-sm" placeholder="{f:translate(key: 'pn_backend_manual.messages:manual.search.placeholder')}" autocomplete="off" data-manual-search-field>
+                    <p class="manual__search-empty" role="status" data-manual-search-empty="{f:translate(key: 'pn_backend_manual.messages:manual.search.empty')}"></p>
+                </div>
                 <ol class="manual__contents-list{f:if(condition: showSections, then: ' manual__contents-list--chapters-bold')}">
                     <f:for each="{manual.tableOfContents}" as="chapter">
                         <li class="manual__contents-item{f:if(condition: chapter.number, then: ' manual__contents-item--numbered')}">
@@ -28,14 +43,23 @@
                 </ol>
             </nav>
         </f:if>
-        <article class="manual__body">
+        <article class="manual__body"{f:if(condition: sectionFeedback, then: ' data-manual-feedback')}>
             <f:format.raw>{manual.bodyHtml}</f:format.raw>
         </article>
+        <f:if condition="{sectionFeedback}">
+            <f:comment><!-- Read by the JavaScript that adds a feedback link to each chapter and section --></f:comment>
+            <template data-manual-feedback-template
+                data-address="{sectionFeedback.address}"
+                data-subject="{sectionFeedback.subject}"
+                data-section="{sectionFeedback.section}"
+                data-label="{sectionFeedback.label}"
+            ><f:format.raw>{sectionFeedback.icon}</f:format.raw></template>
+        </f:if>
     </div>
 </div>
 </f:section>
 
 <f:section name="ContentsLink">
-    <a class="manual__contents-link" href="#{entry.id}"><f:if condition="{entry.number}"><span class="manual__contents-number">{entry.number}</span> </f:if>{entry.title}</a>
+    <a class="manual__contents-link" href="#{entry.id}"><f:if condition="{entry.number}"><span class="manual__contents-number">{entry.number}</span> </f:if><span class="manual__contents-title">{entry.title}</span></a>
 </f:section>
 </html>

@@ -16,7 +16,9 @@ export class ManualContents {
       return
     }
     for (const link of this.#nav.querySelectorAll('a[href^="#"]')) {
-      const heading = document.getElementById(ManualContents.#idFromHash(link.hash))
+      const heading = document.getElementById(
+        ManualContents.#idFromHash(link.hash)
+      )
       if (heading) {
         this.#entries.push({ heading, link })
       }
@@ -38,7 +40,7 @@ export class ManualContents {
         () => {
           this.#clicked = false
         },
-        { passive: true },
+        { passive: true }
       )
     }
     // load: the headings move while images and fonts arrive, and a restored scroll position fires no scroll event

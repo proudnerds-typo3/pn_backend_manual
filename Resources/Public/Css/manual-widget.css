@@ -7,21 +7,41 @@
     font-size: 1rem;
 }
 
+/* One number column for the whole list, as wide as the widest number, so "10." and "1." start
+   their titles at the same place; wrapped titles line up too */
 .manual-widget__contents {
+    display: grid;
+    grid-template-columns: auto 1fr;
     margin-bottom: 0;
     padding: 0;
     list-style: none;
 }
 
-/* Number in its own column, so wrapped titles line up */
+.manual-widget__contents > li,
 .manual-widget__link {
-    display: flex;
-    gap: 0.5em;
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: subgrid;
 }
 
+.manual-widget__title {
+    grid-column: 2;
+}
+
+/* Right-aligned, so the dots line up. The space sits on the number, so a list without numbers has no gap */
 .manual-widget__number {
-    flex-shrink: 0;
+    justify-self: end;
+    padding-inline-end: 0.5em;
     font-variant-numeric: tabular-nums;
+}
+
+/* An underline on the link would also underline the number, so only the title has one */
+.manual-widget .manual-widget__link {
+    text-decoration: none;
+}
+
+.manual-widget__title {
+    text-decoration: underline;
 }
 
 /* White plate: logos are usually made for a light background, the backend may be dark */

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace ProudNerds\PnBackendManual\Tests\Unit\Rendering;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use ProudNerds\PnBackendManual\Rendering\ImageResolver;
 use ProudNerds\PnBackendManual\Rendering\MarkdownRenderer;
@@ -168,10 +169,11 @@ final class MarkdownRendererTest extends UnitTestCase
     }
 
     #[Test]
-    public function renderSupportsTables(): void
+    public function renderGivesTablesTheTableStyleOfTheBackend(): void
     {
         $manual = $this->render(self::MANUAL);
 
+        self::assertStringContainsString('<div class="table-fit table-fit-wrap"><table class="table table-striped">', $manual->bodyHtml);
         self::assertStringContainsString('<th>You want to</th>', $manual->bodyHtml);
     }
 
@@ -225,5 +227,33 @@ final class MarkdownRendererTest extends UnitTestCase
         $manual = $this->render("# T\n\n![Screenshot: the page tree](screenshots/missing.png)");
 
         self::assertSame('<p><em>Screenshot: the page tree</em></p>', trim($manual->introHtml));
+    }
+
+    /**
+     * @return array<string, array{string}>
+     */
+    public static function frontMatterDatesDataProvider(): array
+    {
+        return [
+            'unquoted, read by YAML as a timestamp' => ['date: 2026-10-16'],
+            'quoted string' => ["date: '2026-10-16'"],
+        ];
+    }
+
+    #[Test]
+    #[DataProvider('frontMatterDatesDataProvider')]
+    public function renderReadsTheVersionAndTheDateFromTheFrontMatter(string $dateLine): void
+    {
+        $manual = $this->render("---\nversion: 1.4\n" . $dateLine . "\n---\n\n# T");
+
+        self::assertSame('1.4', $manual->version);
+        self::assertSame('2026-10-16', $manual->updated?->format('Y-m-d'));
+    }
+
+    #[Test]
+    public function renderLeavesVersionAndDateEmptyWithoutFrontMatterOrWithAnInvalidDate(): void
+    {
+        self::assertSame(['', null], [$this->render('# T')->version, $this->render('# T')->updated]);
+        self::assertNull($this->render("---\ndate: next week\n---\n\n# T")->updated);
     }
 }

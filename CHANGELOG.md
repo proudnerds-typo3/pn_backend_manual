@@ -7,6 +7,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [1.1.0] – 2026-10-16
+
+### Added
+
+- Search field above the table of contents of the full view; it filters the
+  chapters and sections on their text while you type, ignoring case and accents
+- Option `feedback` (a `mailto:` or `https://` address): a feedback link next
+  to every chapter and section of the full view, and a *Give feedback* button
+  for the manual as a whole; a mail names the manual and the section, in the
+  subject and in its first line
+- `version` and `date` from the front matter are shown under the title of the
+  full view
+
+### Changed
+
+- Tables have the style of the backend lists (`table-fit`, striped) instead of
+  borders; long text wraps inside the cells
+- Inline code keeps the backend's code color on a light surface, with a little
+  padding, so it reads better in running text; long code wraps
+- The table of contents keeps room for its scrollbar, which no longer covers
+  the search field or the current entry
+- In the widget, the chapter numbers are right-aligned in one column, so
+  "10." lines up with "1."; only the titles are underlined, not the numbers
+
 ## [1.0.1] – 2026-10-16
 
 ### Added
@@ -43,6 +67,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
   the same extension; others are replaced by their alt text
 - English, Dutch and German labels; light and dark backend
 
-[Unreleased]: https://github.com/proudnerds-typo3/pn_backend_manual/compare/1.0.1...HEAD
+[Unreleased]: https://github.com/proudnerds-typo3/pn_backend_manual/compare/1.1.0...HEAD
+[1.1.0]: https://github.com/proudnerds-typo3/pn_backend_manual/compare/1.0.1...1.1.0
 [1.0.1]: https://github.com/proudnerds-typo3/pn_backend_manual/compare/1.0.0...1.0.1
 [1.0.0]: https://github.com/proudnerds-typo3/pn_backend_manual/releases/tag/1.0.0

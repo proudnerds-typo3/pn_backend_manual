@@ -34,6 +34,42 @@
                 <source>Print or save as PDF</source>
                 <target>Afdrukken of opslaan als PDF</target>
             </trans-unit>
+            <trans-unit id="manual.feedback" resname="manual.feedback">
+                <source>Give feedback</source>
+                <target>Feedback geven</target>
+            </trans-unit>
+            <trans-unit id="manual.feedback.subject" resname="manual.feedback.subject">
+                <source>Feedback: %s</source>
+                <target>Feedback: %s</target>
+            </trans-unit>
+            <trans-unit id="manual.version" resname="manual.version">
+                <source>Version %s</source>
+                <target>Versie %s</target>
+            </trans-unit>
+            <trans-unit id="manual.updated" resname="manual.updated">
+                <source>Updated %s</source>
+                <target>Bijgewerkt op %s</target>
+            </trans-unit>
+            <trans-unit id="manual.search.label" resname="manual.search.label">
+                <source>Search the contents</source>
+                <target>Zoeken in de inhoud</target>
+            </trans-unit>
+            <trans-unit id="manual.search.placeholder" resname="manual.search.placeholder">
+                <source>Search</source>
+                <target>Zoeken</target>
+            </trans-unit>
+            <trans-unit id="manual.search.empty" resname="manual.search.empty">
+                <source>No matches</source>
+                <target>Geen resultaten</target>
+            </trans-unit>
+            <trans-unit id="manual.feedback.section" resname="manual.feedback.section">
+                <source>Section</source>
+                <target>Sectie</target>
+            </trans-unit>
+            <trans-unit id="manual.feedback.on" resname="manual.feedback.on">
+                <source>Give feedback on %s</source>
+                <target>Feedback geven over %s</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

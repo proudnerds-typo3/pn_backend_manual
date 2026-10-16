@@ -22,6 +22,7 @@ Register the manual as a dashboard widget in the
             numbered: true
             contentsDepth: 2
             printButton: true
+            feedback: 'mailto:web@example.org'
         tags:
           - name: dashboard.widget
             identifier: 'mySitepackageManual'
@@ -86,6 +87,16 @@ The options are passed as ``$options`` to the widget class.
 
     ``false`` removes the :guilabel:`Print or save as PDF` button from the full
     view. See :ref:`full-view-print`.
+
+..  confval:: feedback
+    :name: option-feedback
+    :type: string
+
+    A ``mailto:`` or ``https://`` address. The full view then shows a feedback
+    link next to every chapter and section, and a :guilabel:`Give feedback`
+    button, so readers can report what is unclear or missing. A mail names the
+    manual and the section in the subject and in its first line. Other values
+    are ignored. See :ref:`full-view-feedback`.
 
 ..  _configuration-widget:
 

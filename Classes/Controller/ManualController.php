@@ -70,15 +70,22 @@ final readonly class ManualController
         $title = $manual->title !== '' ? $manual->title : $languageService->sL($widget->getTitle());
         $this->pageRenderer->addCssFile('EXT:pn_backend_manual/Resources/Public/Css/manual.css');
         $this->pageRenderer->loadJavaScriptModule('@proudnerds/pn-backend-manual/manual-contents.js');
+        $this->pageRenderer->loadJavaScriptModule('@proudnerds/pn-backend-manual/manual-search.js');
         if ($widget->hasPrintButton()) {
             $this->addPrintButton($moduleTemplate, $languageService);
+        }
+        if ($widget->getFeedback() !== '') {
+            $this->addFeedbackButton($moduleTemplate, $languageService, $widget->getFeedback(), $title);
+            $this->pageRenderer->loadJavaScriptModule('@proudnerds/pn-backend-manual/manual-feedback.js');
         }
         $moduleTemplate->setTitle($title);
         $moduleTemplate->assignMultiple([
             'title' => $title,
             'manual' => $manual,
+            'updated' => $this->formatDate($manual->updated, $languageService),
             'logoUrl' => $widget->getLogoUrl($request),
             'showSections' => $widget->getContentsDepth() > 1,
+            'sectionFeedback' => $this->sectionFeedback($widget->getFeedback(), $title, $languageService),
         ]);
 
         return $moduleTemplate->renderResponse('Manual/Show');
@@ -102,6 +109,65 @@ final readonly class ManualController
             ButtonBar::BUTTON_POSITION_LEFT,
             2
         );
+    }
+
+    /**
+     * Feedback on the manual as a whole; each chapter and section has its own link in the text
+     */
+    private function addFeedbackButton(ModuleTemplate $moduleTemplate, LanguageService $languageService, string $feedback, string $title): void
+    {
+        $label = $languageService->sL('pn_backend_manual.messages:manual.feedback');
+        $attributes = [];
+        if (str_starts_with(strtolower($feedback), 'mailto:')) {
+            $subject = sprintf($languageService->sL('pn_backend_manual.messages:manual.feedback.subject'), $title);
+            $feedback .= (str_contains($feedback, '?') ? '&' : '?') . 'subject=' . rawurlencode($subject);
+            // In the module iframe, the backend's Content Security Policy blocks a mailto: navigation
+            $attributes['target'] = '_top';
+        } else {
+            $attributes['target'] = '_blank';
+            $attributes['rel'] = 'noopener noreferrer';
+        }
+        $moduleTemplate->addButtonToButtonBar(
+            $this->componentFactory->createLinkButton()
+                ->setHref($feedback)
+                ->setTitle($label)
+                ->setShowLabelText(true)
+                ->setIcon($this->iconFactory->getIcon('actions-message', IconSize::SMALL))
+                ->setAttributes($attributes),
+            ButtonBar::BUTTON_POSITION_LEFT,
+            2
+        );
+    }
+
+    /**
+     * For the JavaScript that puts a feedback link next to each chapter and section
+     *
+     * @return array{address: string, subject: string, section: string, label: string, icon: string}|null
+     */
+    private function sectionFeedback(string $feedback, string $title, LanguageService $languageService): ?array
+    {
+        if ($feedback === '') {
+            return null;
+        }
+
+        return [
+            'address' => $feedback,
+            'subject' => sprintf($languageService->sL('pn_backend_manual.messages:manual.feedback.subject'), $title),
+            'section' => $languageService->sL('pn_backend_manual.messages:manual.feedback.section'),
+            'label' => $languageService->sL('pn_backend_manual.messages:manual.feedback.on'),
+            'icon' => $this->iconFactory->getIcon('actions-message', IconSize::SMALL)->render(),
+        ];
+    }
+
+    private function formatDate(?\DateTimeImmutable $date, LanguageService $languageService): string
+    {
+        if ($date === null) {
+            return '';
+        }
+        $locale = (string)($languageService->getLocale() ?? 'en');
+        $formatter = new \IntlDateFormatter($locale, \IntlDateFormatter::LONG, \IntlDateFormatter::NONE, $date->getTimezone());
+
+        return (string)$formatter->format($date);
     }
 
     private function getLanguageService(): LanguageService

@@ -10,7 +10,7 @@
             <h3 class="manual-widget__heading"><f:translate key="pn_backend_manual.messages:manual.contents"/></h3>
             <ol class="manual-widget__contents" role="list">
                 <f:for each="{manual.tableOfContents}" as="chapter">
-                    <li><a class="manual-widget__link" href="{manualUrl}#{chapter.id}"><f:if condition="{chapter.number}"><span class="manual-widget__number">{chapter.number}</span> </f:if>{chapter.title}</a></li>
+                    <li><a class="manual-widget__link" href="{manualUrl}#{chapter.id}"><f:if condition="{chapter.number}"><span class="manual-widget__number">{chapter.number}</span> </f:if><span class="manual-widget__title">{chapter.title}</span></a></li>
                 </f:for>
             </ol>
         </f:if>

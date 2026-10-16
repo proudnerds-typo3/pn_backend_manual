@@ -26,6 +26,33 @@
             <trans-unit id="manual.print" resname="manual.print">
                 <source>Print or save as PDF</source>
             </trans-unit>
+            <trans-unit id="manual.feedback" resname="manual.feedback">
+                <source>Give feedback</source>
+            </trans-unit>
+            <trans-unit id="manual.feedback.subject" resname="manual.feedback.subject">
+                <source>Feedback: %s</source>
+            </trans-unit>
+            <trans-unit id="manual.version" resname="manual.version">
+                <source>Version %s</source>
+            </trans-unit>
+            <trans-unit id="manual.updated" resname="manual.updated">
+                <source>Updated %s</source>
+            </trans-unit>
+            <trans-unit id="manual.search.label" resname="manual.search.label">
+                <source>Search the contents</source>
+            </trans-unit>
+            <trans-unit id="manual.search.placeholder" resname="manual.search.placeholder">
+                <source>Search</source>
+            </trans-unit>
+            <trans-unit id="manual.search.empty" resname="manual.search.empty">
+                <source>No matches</source>
+            </trans-unit>
+            <trans-unit id="manual.feedback.section" resname="manual.feedback.section">
+                <source>Section</source>
+            </trans-unit>
+            <trans-unit id="manual.feedback.on" resname="manual.feedback.on">
+                <source>Give feedback on %s</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

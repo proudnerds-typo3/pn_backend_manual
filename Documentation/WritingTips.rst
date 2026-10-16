@@ -17,4 +17,11 @@ Writing tips
     the first ``##`` is not numbered.
 -   Keep links within the manual out of the introduction: it is also shown on
     the dashboard, where they do not work.
+-   Update ``version`` and ``date`` in the front matter with every change. The
+    extension does not guess the date: the modification time of the file is the
+    time of the last deploy, and git is usually not on the server. To make it
+    automatic, let a pre-commit hook in the project set ``date`` to today when
+    the manual is in the commit.
+-   Set :ref:`feedback <confval-option-feedback>` and read what comes in: the
+    questions of readers show what is missing.
 -   Avoid text that only makes sense in another format ("Ctrl+click in Word").

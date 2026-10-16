@@ -18,7 +18,8 @@ use TYPO3\CMS\Dashboard\Widgets\WidgetResult;
 
 /**
  * One widget per manual, so access is granted per backend group via "available widgets".
- * Options: "file" (EXT: path of the Markdown file), "logo", "numbered", "contentsDepth", "printButton"; see README.
+ * Options: "file" (EXT: path of the Markdown file), "logo", "numbered", "contentsDepth", "printButton",
+ * "feedback"; see the manual in Documentation/.
  */
 final readonly class ManualWidget implements WidgetRendererInterface, AdditionalCssInterface
 {
@@ -27,9 +28,10 @@ final readonly class ManualWidget implements WidgetRendererInterface, Additional
     private bool $numbered;
     private int $contentsDepth;
     private bool $printButton;
+    private string $feedback;
 
     /**
-     * @param array{file?: string, logo?: string, numbered?: bool, contentsDepth?: int, printButton?: bool} $options
+     * @param array{file?: string, logo?: string, numbered?: bool, contentsDepth?: int, printButton?: bool, feedback?: string} $options
      */
     public function __construct(
         private WidgetConfigurationInterface $configuration,
@@ -43,6 +45,9 @@ final readonly class ManualWidget implements WidgetRendererInterface, Additional
         $this->numbered = (bool)($options['numbered'] ?? false);
         $this->contentsDepth = (int)($options['contentsDepth'] ?? 1) >= 2 ? 2 : 1;
         $this->printButton = (bool)($options['printButton'] ?? true);
+        $feedback = trim((string)($options['feedback'] ?? ''));
+        // Only mail and web addresses: the value ends up in an href
+        $this->feedback = preg_match('#^(mailto:|https?://)#i', $feedback) === 1 ? $feedback : '';
     }
 
     public function getFile(): string
@@ -74,6 +79,14 @@ final readonly class ManualWidget implements WidgetRendererInterface, Additional
     public function hasPrintButton(): bool
     {
         return $this->printButton;
+    }
+
+    /**
+     * A mailto: or http(s) address, empty when not configured or not allowed
+     */
+    public function getFeedback(): string
+    {
+        return $this->feedback;
     }
 
     /**

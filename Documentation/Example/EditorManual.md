@@ -1,6 +1,7 @@
 ---
 type: manual
-version: "1.0"
+version: "1.2"
+date: 2026-10-16
 ---
 
 # Editor manual example.org

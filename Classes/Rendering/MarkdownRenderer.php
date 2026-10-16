@@ -52,8 +52,16 @@ final class MarkdownRenderer
                 'internal_hosts' => [],
                 'open_in_new_window' => true,
             ],
+            // The table style of the core's backend lists; table-fit-wrap lets text wrap in the cells
+            'table' => [
+                'wrap' => [
+                    'enabled' => true,
+                    'tag' => 'div',
+                    'attributes' => ['class' => 'table-fit table-fit-wrap'],
+                ],
+            ],
             'default_attributes' => [
-                Table::class => ['class' => 'table table-bordered'],
+                Table::class => ['class' => 'table table-striped'],
             ],
         ]);
         $environment->addExtension(new CommonMarkCoreExtension());
@@ -123,7 +131,26 @@ final class MarkdownRenderer
             $renderer->renderNodes($intro),
             $bodyHtml,
             $tableOfContents,
+            ...$this->versionAndDate($document->data->get('front_matter', null)),
         );
+    }
+
+    /**
+     * "version" and "date" from the front matter. YAML turns an unquoted date into a timestamp of
+     * midnight UTC, so it is read back as a date in UTC to stay on the same day in every timezone.
+     *
+     * @return array{version: string, updated: ?\DateTimeImmutable}
+     */
+    private function versionAndDate(mixed $frontMatter): array
+    {
+        $version = is_array($frontMatter) && is_scalar($frontMatter['version'] ?? null) ? (string)$frontMatter['version'] : '';
+        $date = is_array($frontMatter) ? ($frontMatter['date'] ?? null) : null;
+        if (is_int($date)) {
+            $date = gmdate('Y-m-d', $date);
+        }
+        $updated = is_string($date) ? (\DateTimeImmutable::createFromFormat('!Y-m-d', $date) ?: null) : null;
+
+        return ['version' => $version, 'updated' => $updated];
     }
 
     /**

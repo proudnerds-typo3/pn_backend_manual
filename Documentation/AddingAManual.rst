@@ -16,15 +16,16 @@ Put the file in :file:`Resources/Private/` of your sitepackage or custom
 extension, for example :file:`Resources/Private/Manual/EditorManual.md`.
 
 ..  warning::
-    Not in :file:`Resources/Public`: every file there can be downloaded without
+    Not in :file:`Resources/Public`: TYPO3 publishes that folder under
+    :file:`public/_assets/`, so every file in it can be downloaded without
     logging in.
 
 ..  code-block:: markdown
     :caption: Resources/Private/Manual/EditorManual.md
 
     ---
-    type: manual
     version: "1.0"
+    date: 2026-10-16
     ---
 
     # Editor manual example.org
@@ -62,8 +63,10 @@ How the file is read
     -   -   Markdown
         -   Result
     -   -   Front matter (``---`` … ``---``)
-        -   Ignored. Use it for other tools, such as a Word export. It must be
-            valid YAML.
+        -   ``version`` and ``date`` (``YYYY-MM-DD``) are shown under the title
+            of the full view, so readers see how recent the manual is. Other
+            keys are ignored; use them for other tools, such as a Word export.
+            It must be valid YAML.
     -   -   First ``#`` heading
         -   Title of the manual, shown as h1 in the full view. Not repeated in
             the body. Without it, the widget title is used.
@@ -80,12 +83,18 @@ How the file is read
             manual. With :ref:`numbered <confval-option-numbered>` the number is
             shown but not part of the anchor.
     -   -   Tables
-        -   Backend table style.
+        -   The table style of the backend lists (``table-fit``,
+            ``table table-striped``); long text wraps inside the cells.
     -   -   Links to other sites
         -   Open in a new window, with a hidden "opens in a new window" for
             screen readers.
     -   -   Raw HTML, ``javascript:`` links
         -   Stripped, also from the title, the table of contents and alt texts.
+            To show HTML as an example, write it as code between backticks:
+            ```<strong>``` (one backtick on each side).
+    -   -   Code between backticks
+        -   The code color of the backend, on a light surface; long code such
+            as a URL wraps.
     -   -   Images
         -   See :ref:`adding-a-manual-images`.
 
@@ -94,17 +103,42 @@ How the file is read
 Images and screenshots
 ======================
 
-Write image paths **relative to the Markdown file**, so the manual also
-previews correctly in your IDE or on GitHub and Bitbucket:
+The manual and its images live in different folders: the manual in
+:file:`Resources/Private/`, which is not published, and the images in
+:file:`Resources/Public/`, which is published so the browser can load them.
 
 ..  code-block:: text
 
     Resources/
-    ├── Private/Manual/EditorManual.md        ![…](../../Public/Manual/page-tree.png)
-    └── Public/Manual/page-tree.png
+    ├── Private/
+    │   └── Manual/
+    │       └── EditorManual.md     ← the manual
+    └── Public/
+        └── Manual/
+            └── page-tree.png       ← the image
+
+In the manual, write the path to the image **relative to the Markdown file**:
+
+..  code-block:: markdown
+
+    ![The page tree in Content › Layout](../../Public/Manual/page-tree.png)
+
+The path starts in the folder of the manual, :file:`Resources/Private/Manual/`:
+
+#.  ``../`` goes up one folder, to :file:`Resources/Private/`
+#.  the second ``../`` goes up to :file:`Resources/`
+#.  ``Public/Manual/page-tree.png`` goes down to the image
+
+This is the usual way to link an image in Markdown, so the image also shows in
+the preview of your IDE and on GitHub or Bitbucket.
 
 Only files inside :file:`Resources/Public` of the **same extension** are shown,
 with a cache-busting URL, so a replaced screenshot shows up straight away.
+
+..  tip::
+    Avoid spaces in file names, for example :file:`page-tree.png` instead of
+    :file:`page tree.png`. The image is shown either way, but the core cannot
+    add the cache-busting part to a URL of a file with a space in its name.
 
 An image that is missing or lies elsewhere is replaced by its alt text in
 italics, as a browser does with a broken image. That applies to another folder,
