@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<guides xmlns="https://www.phpdoc.org/guides"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="https://www.phpdoc.org/guides ../vendor/phpdocumentor/guides-cli/resources/schema/guides.xsd"
+        links-are-relative="true"
+        default-code-language="yaml"
+>
+    <extension class="\T3Docs\Typo3DocsTheme\DependencyInjection\Typo3DocsThemeExtension"
+               project-home="https://extensions.typo3.org/extension/pn_backend_manual"
+               project-contact="mailto:extensions@proudnerds.com"
+               project-repository="https://github.com/proudnerds-typo3/pn_backend_manual"
+               project-issues="https://github.com/proudnerds-typo3/pn_backend_manual/issues"
+               edit-on-github="proudnerds-typo3/pn_backend_manual"
+               edit-on-github-branch="main"
+               typo3-core-preferred="14.3"
+               interlink-shortcode="proudnerds/pn-backend-manual"
+    />
+
+    <project title="Backend Manual"
+             release="1.0.1"
+             version="1.0"
+             copyright="since 2026 by ProudNerds &amp; contributors"
+    />
+
+    <inventory id="t3coreapi" url="https://docs.typo3.org/m/typo3/reference-coreapi/14.3/en-us/"/>
+</guides>

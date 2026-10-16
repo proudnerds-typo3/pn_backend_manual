@@ -12,6 +12,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 ### Added
 
 - `ext_emconf.php` with the category, state and constraints for the TER
+- A manual for docs.typo3.org in `Documentation/`; the README is now an
+  introduction with links to it
 
 ### Fixed
 
