@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace ProudNerds\PnBackendManual\Manual;
 
+use League\CommonMark\Parser\MarkdownParser;
 use ProudNerds\PnBackendManual\Rendering\ImageResolver;
 use ProudNerds\PnBackendManual\Rendering\MarkdownRenderer;
 use ProudNerds\PnBackendManual\Rendering\RenderedManual;
@@ -32,6 +33,10 @@ final readonly class ManualLoader
         LanguageService $languageService,
         bool $numbered = false,
     ): RenderedManual {
+        // Composer installs it; a classic mode installation from the TER does not
+        if (!class_exists(MarkdownParser::class)) {
+            throw new \RuntimeException('The library league/commonmark is missing; install this extension with Composer', 1791980004);
+        }
         if (!PathUtility::isExtensionPath($file)) {
             throw new \InvalidArgumentException('A manual must be an EXT: path, got "' . $file . '"', 1791980002);
         }

@@ -54,6 +54,11 @@ registered with `numbered: true` and `contentsDepth: 2`.
 TYPO3 v14.3 LTS with `typo3/cms-dashboard` · PHP 8.3+ · `league/commonmark` ^2.10
 (installed by Composer)
 
+**Composer installations only.** The extension is also listed in the
+[TER](https://extensions.typo3.org/extension/pn_backend_manual), but a classic
+mode installation from there lacks `league/commonmark`: the widget and the full
+view then show an error, and the log names the missing library.
+
 ## Installation
 
 ```bash

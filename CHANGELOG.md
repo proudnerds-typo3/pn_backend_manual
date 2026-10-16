@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [1.0.1] – 2026-10-16
+
+### Added
+
+- `ext_emconf.php` with the category, state and constraints for the TER
+
+### Fixed
+
+- Without the library `league/commonmark`, as in a classic mode installation
+  from the TER, the widget and the full view show an error message instead of
+  failing; the log names the missing library
+
 ## [1.0.0] – 2026-10-16
 
 ### Added
@@ -29,5 +41,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
   the same extension; others are replaced by their alt text
 - English, Dutch and German labels; light and dark backend
 
-[Unreleased]: https://github.com/proudnerds-typo3/pn_backend_manual/compare/1.0.0...HEAD
+[Unreleased]: https://github.com/proudnerds-typo3/pn_backend_manual/compare/1.0.1...HEAD
+[1.0.1]: https://github.com/proudnerds-typo3/pn_backend_manual/compare/1.0.0...1.0.1
 [1.0.0]: https://github.com/proudnerds-typo3/pn_backend_manual/releases/tag/1.0.0
