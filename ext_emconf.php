@@ -4,7 +4,7 @@
 // composer.json: `typo3/tailor set-version` updates both. The TER rejects strict_types here.
 $EM_CONF[$_EXTKEY] = [
     'title' => 'Backend Manual',
-    'description' => 'Editor manuals in Markdown, registered by a sitepackage or extension and shown as dashboard widgets with a full view in the TYPO3 backend. Composer installations only.',
+    'description' => 'Editor manuals in Markdown, registered by a sitepackage or extension and shown as dashboard widgets with a full view in the TYPO3 backend.',
     'category' => 'be',
     'author' => 'Jacco van der Post',
     'author_email' => 'extensions@proudnerds.com',
