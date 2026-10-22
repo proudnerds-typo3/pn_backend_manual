@@ -12,7 +12,7 @@ the text, a :guilabel:`Go back` button to the dashboard, a
 :guilabel:`Give feedback` button.
 
 ..  figure:: Images/full-view.png
-    :alt: Full view: buttons "Go back", "Print or save as PDF" and "Give feedback", the title with "Version 1.2 · Updated October 16, 2026", the table of contents with a search field, and a feedback icon next to each heading
+    :alt: Full view: buttons "Go back", "Print or save as PDF" and "Give feedback", the title with "Version 1.2 · Updated October 16, 2026", the table of contents with a search field and arrow buttons, and a feedback icon next to each heading
 
     The full view of the example manual.
 
@@ -57,16 +57,27 @@ Remove the button with :ref:`printButton: false <confval-option-printbutton>`.
 Search
 ======
 
-The search field above the table of contents filters it while the reader types.
-An entry stays when every word occurs in its heading or its text; a chapter
-also stays when one of its sections matches. Case and accents are ignored, so
-``uber`` finds *Über uns*. :kbd:`Escape` clears the field. Without JavaScript
-the field is not shown.
+The search field above the table of contents filters it while the reader types,
+and highlights the words in the text in orange. An entry stays when every word
+occurs in its heading or its text; a chapter also stays when one of its
+sections matches. Case and accents are ignored, so ``uber`` finds *Über uns*,
+and part of a word is enough. Like the search in the Page TSconfig and
+TypoScript modules, words shorter than three characters are left out.
+
+Below the field, the number of results is shown. The arrow buttons next to the
+field, or :kbd:`Enter` and :kbd:`Shift` + :kbd:`Enter` (or :kbd:`↓` and
+:kbd:`↑`) in the field, step through them: the current result gets a darker
+orange, is scrolled to the middle of the screen, and the counter shows its
+position, such as *3 of 12*. The first step goes to the first result from
+where the reader is; after the last one, it starts again at the first.
+
+:kbd:`Escape` clears the field. Without JavaScript the field is not shown; the
+highlights are not printed.
 
 ..  figure:: Images/search.png
-    :alt: The search field with "teaser": only "3. News items" and "3.2 Fields" are left in the table of contents, next to the table of fields
+    :alt: The search field with "event", the arrow buttons and the counter "2 of 8": five chapters and sections are left in the table of contents, the matches in the text are highlighted in orange, the current one in "4. Events" darker
 
-    Searching for "teaser" leaves the chapter and the section that mention it.
+    Searching for "event": the second of eight results is the current one.
 
 ..  _full-view-feedback:
 

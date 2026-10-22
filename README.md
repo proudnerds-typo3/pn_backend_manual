@@ -14,9 +14,10 @@ code it describes, and editors open it from their dashboard.
   chapters; one click opens the full manual inside the backend. No searching
   through mail or intranet, no separate login.
 - **Easy to look things up.** A table of contents next to the text that stays
-  in view, a search field that filters it while you type, optional chapter
-  numbers (1., 1.1) and sections, and a marker that shows where you are, like
-  the selected page in the page tree.
+  in view, a search field that filters it and highlights the words in the
+  text while you type, with arrows to step through the results, optional
+  chapter numbers (1., 1.1) and sections, and a marker that shows where you
+  are, like the selected page in the page tree.
 - **Feedback from readers.** A feedback link next to every chapter and section
   sends a mail about that section, and the version and date under the title
   show how recent the manual is.
@@ -47,12 +48,12 @@ Example 'Editor manual' widget on the dashboard, with the introduction and the c
 The full view: version and date under the title, a search field above the
 table of contents, and buttons to print or give feedback:
 
-![Full view: buttons "Go back", "Print or save as PDF" and "Give feedback", the title with "Version 1.2 · Updated October 16, 2026", the table of contents with a search field, and a feedback icon next to each heading](Documentation/Images/full-view.png)
+![Full view: buttons "Go back", "Print or save as PDF" and "Give feedback", the title with "Version 1.2 · Updated October 16, 2026", the table of contents with a search field and arrow buttons, and a feedback icon next to each heading](Documentation/Images/full-view.png)
 
-Searching for "teaser" leaves the chapter and the section that mention it; the
-current section is marked:
+Searching for "event" leaves the chapters and sections that mention it and
+highlights the matches; the arrows step through them:
 
-![The search field with "teaser": only "3. News items" and "3.2 Fields" are left in the table of contents, next to the table of fields](Documentation/Images/search.png)
+![The search field with "event", the arrow buttons and the counter "2 of 8": five chapters and sections are left in the table of contents, the matches in the text are highlighted in orange, the current one in "4. Events" darker](Documentation/Images/search.png)
 
 All three show the example manual in
 [`Documentation/Example/EditorManual.md`](Documentation/Example/EditorManual.md),

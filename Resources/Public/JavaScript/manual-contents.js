@@ -34,7 +34,8 @@ export class ManualContents {
         this.#mark(link)
       }
     })
-    for (const type of ['wheel', 'touchmove', 'keydown']) {
+    // pointerdown: the search buttons scroll the page too; it comes before the click on an entry
+    for (const type of ['wheel', 'touchmove', 'keydown', 'pointerdown']) {
       window.addEventListener(
         type,
         () => {

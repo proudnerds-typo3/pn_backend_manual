@@ -47,6 +47,15 @@
             <trans-unit id="manual.search.empty" resname="manual.search.empty">
                 <source>No matches</source>
             </trans-unit>
+            <trans-unit id="manual.search.previous" resname="manual.search.previous">
+                <source>Previous result</source>
+            </trans-unit>
+            <trans-unit id="manual.search.next" resname="manual.search.next">
+                <source>Next result</source>
+            </trans-unit>
+            <trans-unit id="manual.search.position" resname="manual.search.position">
+                <source>{current} of {count}</source>
+            </trans-unit>
             <trans-unit id="manual.feedback.section" resname="manual.feedback.section">
                 <source>Section</source>
             </trans-unit>

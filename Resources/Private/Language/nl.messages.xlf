@@ -62,6 +62,18 @@
                 <source>No matches</source>
                 <target>Geen resultaten</target>
             </trans-unit>
+            <trans-unit id="manual.search.previous" resname="manual.search.previous">
+                <source>Previous result</source>
+                <target>Vorig resultaat</target>
+            </trans-unit>
+            <trans-unit id="manual.search.next" resname="manual.search.next">
+                <source>Next result</source>
+                <target>Volgend resultaat</target>
+            </trans-unit>
+            <trans-unit id="manual.search.position" resname="manual.search.position">
+                <source>{current} of {count}</source>
+                <target>{current} van {count}</target>
+            </trans-unit>
             <trans-unit id="manual.feedback.section" resname="manual.feedback.section">
                 <source>Section</source>
                 <target>Sectie</target>

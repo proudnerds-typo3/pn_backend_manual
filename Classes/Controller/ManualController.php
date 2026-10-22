@@ -58,6 +58,7 @@ final readonly class ManualController
         try {
             $manual = $this->manualLoader->load($widget->getFile(), $request, $languageService, $widget->isNumbered());
         } catch (\Throwable $exception) {
+            // @extensionScannerIgnoreLine PSR-3 logger
             $this->logger->error('Manual "{manual}" cannot be shown: {message}', [
                 'manual' => $identifier,
                 'message' => $exception->getMessage(),
@@ -67,6 +68,7 @@ final readonly class ManualController
             return $moduleTemplate->renderResponse('Manual/Error')->withStatus(500);
         }
 
+        // @extensionScannerIgnoreLine Manual::$title of this extension
         $title = $manual->title !== '' ? $manual->title : $languageService->sL($widget->getTitle());
         $this->pageRenderer->addCssFile('EXT:pn_backend_manual/Resources/Public/Css/manual.css');
         $this->pageRenderer->loadJavaScriptModule('@proudnerds/pn-backend-manual/manual-contents.js');

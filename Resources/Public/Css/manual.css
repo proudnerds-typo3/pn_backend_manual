@@ -55,6 +55,9 @@
         /* Room for the scrollbar, also for overlay scrollbars that take none, so it never covers the search field or the current entry */
         scrollbar-gutter: stable;
         padding-inline-end: 0.75rem;
+        /* The scroll container clips the focus outline of the search field; the negative margin keeps the content in place */
+        margin-inline-start: calc(-1 * var(--typo3-outline-width, 0.25rem));
+        padding-inline-start: var(--typo3-outline-width, 0.25rem);
     }
 }
 
@@ -66,12 +69,23 @@
     margin-bottom: 0.75rem;
 }
 
-.manual__search-empty {
+.manual__search-status {
     margin: 0.5rem 0 0;
 }
 
-.manual__search-empty:empty {
+.manual__search-status:empty {
     display: none;
+}
+
+/* The orange of the page tree matches, but opaque: the half-transparent one fades on the dark theme */
+::highlight(pn-backend-manual-search) {
+    background-color: var(--token-color-orange-30, Mark);
+    color: var(--bs-highlight-color, MarkText);
+}
+
+::highlight(pn-backend-manual-search-current) {
+    background-color: var(--token-color-orange-50, Highlight);
+    color: var(--bs-highlight-color, HighlightText);
 }
 
 /* The numbered entries are grids, which would otherwise override the hidden attribute */
@@ -233,6 +247,11 @@
         max-height: none;
         overflow: visible;
         margin-bottom: 2rem;
+    }
+
+    ::highlight(pn-backend-manual-search),
+    ::highlight(pn-backend-manual-search-current) {
+        background-color: transparent;
     }
 
     .manual__contents-link[aria-current] {

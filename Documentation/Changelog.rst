@@ -11,6 +11,21 @@ Releases follow `Semantic Versioning <https://semver.org/>`__. Only
 ``Major.Minor`` versions are published as separate documentation branches,
 because patch releases never introduce breaking changes or new features.
 
+1.2.0
+=====
+
+-   :ref:`Search <full-view-search>` highlights the words in the text, shows
+    the number of results, and steps through them with the arrow buttons next
+    to the field, :kbd:`Enter` and :kbd:`Shift` + :kbd:`Enter`, or :kbd:`↓`
+    and :kbd:`↑`; the counter shows the position, such as *3 of 12*
+-   Words shorter than three characters are left out of the search, like in the
+    search of the Page TSconfig and TypoScript modules
+-   :file:`composer.json` declares the version and ``providesPackages``, so
+    TYPO3 14.3 no longer reports :file:`ext_emconf.php` as deprecated
+-   The Extension Scanner no longer reports false positives
+-   Fixed: the focus outline of the search field is no longer cut off on the
+    left
+
 1.1.0
 =====
 

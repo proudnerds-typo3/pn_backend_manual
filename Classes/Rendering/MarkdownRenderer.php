@@ -122,6 +122,7 @@ final class MarkdownRenderer
         // The intro is also shown on the dashboard, where heading ids could clash with another manual
         foreach ($intro as $node) {
             if ($node instanceof Heading) {
+                // @extensionScannerIgnoreLine Node::$data of league/commonmark
                 $node->data->remove('attributes/id');
             }
         }
@@ -131,6 +132,7 @@ final class MarkdownRenderer
             $renderer->renderNodes($intro),
             $bodyHtml,
             $tableOfContents,
+            // @extensionScannerIgnoreLine Node::$data of league/commonmark
             ...$this->versionAndDate($document->data->get('front_matter', null)),
         );
     }
@@ -159,6 +161,7 @@ final class MarkdownRenderer
     private function contentsEntry(Heading $heading, string $number): array
     {
         return [
+            // @extensionScannerIgnoreLine Node::$data of league/commonmark
             'id' => (string)$heading->data->get('attributes/id', ''),
             'title' => $this->plainText($heading),
             'number' => $number,
@@ -207,6 +210,7 @@ final class MarkdownRenderer
     {
         $links = [];
         foreach ($document->iterator() as $node) {
+            // @extensionScannerIgnoreLine Node::$data of league/commonmark
             if ($node instanceof Link && $node->data->get('attributes/target', '') === '_blank') {
                 $links[] = $node;
             }

@@ -7,6 +7,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [1.2.0] – 2026-10-22
+
+### Added
+
+- The search field also highlights the words in the text of the full view; not
+  in print
+- The number of results below the search field, and arrow buttons to step
+  through them (also `Enter` / `Shift+Enter` and `↓` / `↑` in the field); the
+  current result is darker and scrolled into view, the counter shows *3 of 12*
+
+### Changed
+
+- Search ignores words shorter than three characters, for filtering as well,
+  like the search in the core's Page TSconfig and TypoScript modules
+- `composer.json` declares the version in `extra.typo3/cms.version` and an
+  empty `extra.typo3/cms.Package.providesPackages`, so TYPO3 14.3 no longer
+  reports `ext_emconf.php` as deprecated in classic mode
+- The Extension Scanner no longer reports the false positives on `Node::$data`
+  of league/commonmark, the logger and `Manual::$title`
+
+### Fixed
+
+- The focus outline of the search field is no longer cut off on the left by
+  the scrolling table of contents
+
 ## [1.1.0] – 2026-10-16
 
 ### Added
@@ -67,7 +92,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
   the same extension; others are replaced by their alt text
 - English, Dutch and German labels; light and dark backend
 
-[Unreleased]: https://github.com/proudnerds-typo3/pn_backend_manual/compare/1.1.0...HEAD
+[Unreleased]: https://github.com/proudnerds-typo3/pn_backend_manual/compare/1.2.0...HEAD
+[1.2.0]: https://github.com/proudnerds-typo3/pn_backend_manual/compare/1.1.0...1.2.0
 [1.1.0]: https://github.com/proudnerds-typo3/pn_backend_manual/compare/1.0.1...1.1.0
 [1.0.1]: https://github.com/proudnerds-typo3/pn_backend_manual/compare/1.0.0...1.0.1
 [1.0.0]: https://github.com/proudnerds-typo3/pn_backend_manual/releases/tag/1.0.0
